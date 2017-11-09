@@ -1,0 +1,31 @@
+﻿@model _4th_Year_Project.ViewModels.DashboardCameraViewModel
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*If count is greater than five set it to popular otherwise set it to null*@
+@{
+    var className = Model.Users.Count > 5 ? "popular" : null; 
+}
+
+
+<h2>@Model.Cameras.Name</h2>
+
+
+@*The if block checks if the user has looked at the dashboard before if not prints message if user has then prints user names.*@
+@if (Model.Users.Count == 0)
+{
+    <p>No one has viewed the Dashboard before. </p>
+}
+else
+{
+    <ul>
+        @foreach (var user in Model.Users)
+        {
+            <li>@user.Name</li>
+        }
+    </ul>
+    
+}
+
+
